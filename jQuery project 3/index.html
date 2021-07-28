@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>Image Slider</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height:100vh;
+        }
+        .wrapped {
+  text-align: center;
+  font-family: 'Kaushan Script', cursive;
+  display: table;
+  width:400px;
+  margin:150px auto;
+
+}
+.wrapped h1 {
+  color: #444;
+  font-size: 50px;
+  font-weight: 700;
+  padding: 0px 0 0px 15px;
+  margin: 0 0 30px 0;
+  text-transform: uppercase;
+
+}
+.inner {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.slider3d-class {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: url(slide_image.jpg);
+  background-size: 100% 3600%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+
+.ranger { width: 200px; }
+
+.ranger:hover { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="wrapped">
+        <div class="inner">
+          <h1>slider3D</h1>
+          <div class="slider3d-class" data-image-size="400px" ></div>
+          <input class="ranger" type="range" min="0" max="35" value="0" step="1"/>
+        </div>
+      </div>
+
+
+      <script type="text/javascript">
+        jQuery(document).ready(function($){
+            $(".slider3d-class").css({ "height":$(".slider3d-class").data("image-size") });
+            $(".ranger").on("input change",function(){
+                var position = $(this).val()*$(this).parent().find(".slider3d-class").height();
+                $(this).parent().find(".slider3d-class").css({"background-position-y": -position });
+            });
+        });
+    </script>
+
+</body>
+</html>
